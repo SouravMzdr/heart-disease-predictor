@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+
+<div class="container">
+
+
+
+
+    <h2>Heart Diesease prediction</h2>
+    <div>
+        <form class="from-inline" action="{{ url_for('predict')}}" method="post">
+            <div class="form-group">
+                <label class="">Age:</label>
+                <input id="age" name="age" type="number " class="form-control">
+            </div>
+         	    
+	    <div class="form-group">
+            <label class="">Sex:</label>
+	    	<select name="sex" id="sex" required="required" class="form-control">
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="">Chest Pain:</label>
+            <select name="cp" id="cp" required="required" class="form-control">
+                <option value="3">Typical angina</option>
+                <option value="2">Non anginal pain </option>
+                <option value="1">Atypical angina</option>
+                <option value="0">Asymptomatic</option>
+            </select>
+        </div>
+
+        
+        <div class="form-group">
+            <label class="">Resting Bleed Pressure:</label>
+            <input id="trestbps" name="trestbps" required="required" class="form-control">
+        </div>
+
+            
+        <div class="form-group">
+            <label>Serun Cholestrol(in mg/dl)</label>
+            <input id="chol" name="chol" required="required" class="form-control">
+        </div>
+        
+        <div class="form-group">
+            <label for="">Fasting Blood Sugar(>120 mg/dl)</label>
+            <select name="fbs" id="fbps" required="required" class="form-control">
+                <option value="1">1</option>
+                <option value="0">0</option>
+            </select>
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="">Resting Blood electrocardiographic results </label>
+            <select name="restecg" id="restecg" required="required" class="form-control">
+                <option value="2">Having ST-T abnormality(T wave inversion and/or ST elevation or depression of > 0.005 mV)</option>
+                <option value="1">Normal</option>
+                <option value="0">Showing probable or definite left ventricular hypertrophy by Estes’ criteria</option>
+            </select>
+    
+        </div>
+    
+        
+        <div class="from-group">
+            <label for="">Maximum Heart Rate Achieved</label>
+    		<input id="thalach" name="thalach" required="required" class="form-control">
+        </div>
+ 
+        <div class="form-group">
+            <label for="">Exercise induced angina</label>
+            <select name="exang" id="exang" required="required" class="form-control">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+
+        <div class="from-group">
+            <label for="">ST Depression induced by exercise relative to rest</label>
+    		<input id="oldpeak" name="oldpeak" required="required" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="">Slope of peak exercise ST segment</label>
+            <select name="slope" id="slope" required="required" class="form-control">
+                <option value="2">Downsloping</option>
+                <option value="1">Falt</option>
+                <option value="0">Upsloping</option>
+             </select>
+        </div>
+
+        <div class="from-group">
+            <label for="">The number of major vessels</label>
+            <select name="ca" id="ca" required="required" class="form-control">
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1</option>
+                <option value="0">0</option>
+             </select>
+        </div>
+
+        <div class="form-group">
+            <label for="">Thalassemia Value</label>
+            <select name="thal" id="thal" required="required" class="form-control">
+                <option value="3">Reversible defect</option>
+                <option value="2">Normal blood flow</option>
+                <option value="1">Fixed defect</option>
+                <option value="0">NULL</option>
+             </select>
+        </div>
+
+
+            <br><button id="sub" type="submit " class="form-control">Predict</button>
+            <br>
+
+
+
+
+        </form>
+
+
+
+        <br><br><h3>{{ prediction_text }}<h3>
+    </div>
+</div>
+
+
+
+    <!-- <style>
+        body {
+            background-color: white;
+            text-align: center;
+            padding: 0px;
+        }
+        
+        #research {
+            font-size: 18px;
+            width: 100px;
+            height: 23px;
+            top: 23px;
+        }
+        
+        #box {
+            border-radius: 60px;
+            border-color: 45px;
+            border-style: solid;
+            font-family: cursive;
+            text-align: center;
+            background-color: rgb(168, 131, 61);
+            font-size: medium;
+            position: absolute;
+            width: 700px;
+            bottom: 9%;
+            height: 850px;
+            right: 30%;
+            padding: 0px;
+            margin: 0px;
+            font-size: 14px;
+        }
+        
+        #fuel {
+            width: 83px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 20px;
+        }
+        
+        #fuel:hover {
+            background-color: coral;
+        }
+        
+        #research {
+            width: 99px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #research:hover {
+            background-color: coral;
+        }
+        
+        #resea {
+            width: 99px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #resea:hover {
+            background-color: coral;
+        }
+        
+        #sub {
+            width: 120px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #sub:hover {
+            background-color: darkcyan;
+        }
+        
+        #first {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #second {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #third {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #fourth {
+           border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style> -->
+</body>
+
+</html> 
